@@ -21,7 +21,7 @@ public class ApiResult <T>  {
         this.Msg = Msg;
         this.Code=Code;
     }
-    public void setSuccess(boolean success) {
+    public void setIsSuccess(boolean success) {
         IsSuccess = success;
     }
 
@@ -37,7 +37,7 @@ public class ApiResult <T>  {
         Msg = msg;
     }
 
-    public boolean isSuccess() {
+    public boolean getIsSuccess() {
         return IsSuccess;
     }
 
