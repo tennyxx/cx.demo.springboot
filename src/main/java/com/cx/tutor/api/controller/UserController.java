@@ -19,8 +19,8 @@ public class UserController {
     //创建线程安全的Map
     static Map<Long, User> user = Collections.synchronizedMap(new HashMap<Long, User>());
 
-    @ApiOperation(value = "获取用户详情",notes = "获取用户信息")
-    @ApiImplicitParam(name = "id",value = "用户id",required =true, dataType ="Long")
+    @ApiOperation(value = "根据用户ID获取用户详情",notes = "获取用户信息")
+    @ApiImplicitParam(name = "id",value = "用户id",required =true, dataType ="Long",paramType ="path")
     @RequestMapping(value = "/UserInfo/{id}", method = RequestMethod.GET)
     public ApiResult<User> getUserInfo(@PathVariable Long id) {
         ApiResult<User> res = new ApiResult<User>();
@@ -40,8 +40,8 @@ public class UserController {
     /*
       测试统一异常处理，抛出异常
      */
-    @ApiOperation(value = "测试异常",notes = "测试统一异常处理，抛出异常")
-    @RequestMapping("/TestError")
+    @ApiOperation(value = "测试统一异常处理",notes = "测试统一异常处理，抛出异常")
+    @RequestMapping(value = "/TestError",method = RequestMethod.GET)
     public String testError() throws Exception {
         throw new Exception("发生错误");
     }

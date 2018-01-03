@@ -26,7 +26,7 @@ public class GlobalExceptionHandler {
         }
         res.setData(sOut);
         res.setMsg("统一错误处理");
-        //入库暂时省略
+        //错误日志入库暂时省略
         return res;
     }
 }
