@@ -1,7 +1,9 @@
 package com.cx.tutor.api.model;
 
 import jdk.nashorn.internal.objects.annotations.Setter;
+import org.springframework.stereotype.Component;
 
+@Component
  public class User {
     private long id;
     private String name;

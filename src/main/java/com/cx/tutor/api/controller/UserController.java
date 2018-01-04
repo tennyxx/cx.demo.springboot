@@ -5,6 +5,7 @@ import com.cx.tutor.api.model.HttpCode;
 import com.cx.tutor.api.model.User;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +17,12 @@ import java.util.*;
 @RestController
 @RequestMapping("/User")
 public class UserController {
+    //注入的注解
+    @Autowired
+    //需要用到的类  控制反转，不需要主动实例化
+    private  User uinfo;
+    private  ApiResult<User> res;
+
     //创建线程安全的Map
     static Map<Long, User> user = Collections.synchronizedMap(new HashMap<Long, User>());
 
@@ -23,15 +30,14 @@ public class UserController {
     @ApiImplicitParam(name = "id",value = "用户id",required =true, dataType ="Long",paramType ="path")
     @RequestMapping(value = "/UserInfo/{id}", method = RequestMethod.GET)
     public ApiResult<User> getUserInfo(@PathVariable Long id) {
-        ApiResult<User> res = new ApiResult<User>();
+
         res.setIsSuccess(false);
         //暂时省略取数据
-        User user = new User();
-        user.setAge(123);
-        user.setId(1);
-        user.setName("liucx");
+        uinfo.setAge(123);
+        uinfo.setId(1);
+        uinfo.setName("liucx");
         res.setIsSuccess(true);
-        res.setData(user);
+        res.setData(uinfo);
         res.setCode(HttpCode.OK.getCode());
         res.setMsg("请求成功");
         return res;
