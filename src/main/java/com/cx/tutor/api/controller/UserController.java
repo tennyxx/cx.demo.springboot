@@ -19,8 +19,8 @@ import java.util.*;
 public class UserController {
     //注入的注解
     @Autowired
-    //需要用到的类  控制反转，不需要主动实例化
     private  User uinfo;
+    @Autowired
     private  ApiResult<User> res;
 
     //创建线程安全的Map
@@ -30,8 +30,6 @@ public class UserController {
     @ApiImplicitParam(name = "id",value = "用户id",required =true, dataType ="Long",paramType ="path")
     @RequestMapping(value = "/UserInfo/{id}", method = RequestMethod.GET)
     public ApiResult<User> getUserInfo(@PathVariable Long id) {
-
-        res.setIsSuccess(false);
         //暂时省略取数据
         uinfo.setAge(123);
         uinfo.setId(1);
