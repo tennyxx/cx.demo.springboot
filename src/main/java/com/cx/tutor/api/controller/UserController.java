@@ -3,6 +3,8 @@ package com.cx.tutor.api.controller;
 import com.cx.tutor.api.model.ApiResult;
 import com.cx.tutor.api.model.HttpCode;
 import com.cx.tutor.api.model.User;
+import com.cx.tutor.api.services.IUserServiece;
+import com.cx.tutor.api.services.impl.UserServiceImpl;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +22,8 @@ import java.util.Map;
 public class UserController {
     //注入的注解
     @Autowired
-    private  User uinfo;
+    IUserServiece userServiece;
+   // private  User uinfo;
     @Autowired
     private  ApiResult<User> res;
 
@@ -33,9 +36,10 @@ public class UserController {
 
     public ApiResult<User> getUserInfo(@PathVariable Long id) {
         //暂时省略取数据
-        uinfo.setAge(123);
+        /*uinfo.setAge(123);
         uinfo.setId(1);
-        uinfo.setName("liucx");
+        uinfo.setName("liucx");*/
+        User uinfo = userServiece.get(id);
         res.setIsSuccess(true);
         res.setData(uinfo);
         res.setCode(HttpCode.OK.getCode());
