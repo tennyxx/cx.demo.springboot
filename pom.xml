@@ -82,6 +82,11 @@
             <artifactId>validate</artifactId>
             <version>1.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-redis</artifactId>
+            <version>1.7.6.RELEASE</version>
+        </dependency>
     </dependencies>
 
     <build>
